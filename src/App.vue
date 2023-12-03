@@ -3,8 +3,8 @@
     <a href="" v-for="(a, i) in 메뉴들" :key="i">{{ a }}</a>
   </div>
 
-  <Modal :원룸들="원룸들" :누른거="누른거" :모달창열렸니="모달창열렸니"/>
-  <Card :원룸="원룸" v-for="(원룸, i) in 원룸들" :key="i"/>
+  <Modal @closeModal="모달창열렸니 = false" :원룸들="원룸들" :누른거="누른거" :모달창열렸니="모달창열렸니"/>
+  <Card @openModal="모달창열렸니 = true; 누른거 = $event" :원룸="원룸" v-for="(원룸, i) in 원룸들" :key="i"/>
     <!-- <img :src="원룸.image" alt="">
     <h4 @click="모달창열렸니 = true; 누른거 = i">{{ 원룸.title }}</h4>
     <p>{{ 원룸.price }}</p> -->
@@ -51,11 +51,6 @@ body {
 
 div {
   box-sizing: border-box;
-}
-
-.room-img {
-  width: 100%;
-  margin-top: 40px;
 }
 
 #app {

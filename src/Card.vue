@@ -1,7 +1,7 @@
 <template>
     <div>
-        <img :src="원룸.image" alt="">
-        <h4>{{ 원룸.title }}</h4>
+        <img :src="원룸.image" alt="" class="room-img">
+        <h4 @click="send">{{ 원룸.title }}</h4>
         <p>{{ 원룸.price }}</p>
     </div>
 </template>
@@ -12,9 +12,17 @@ export default {
     props : {
         원룸 : Object,
     },
+    methods : {
+        send(){
+            this.$emit('openModal', this.원룸.id)
+        }
+    }
 }
 </script>
 
 <style>
-
+.room-img {
+  width: 100%;
+  margin-top: 40px;
+}
 </style>
